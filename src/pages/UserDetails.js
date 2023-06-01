@@ -106,7 +106,7 @@ export default function UserDetail() {
         const file = e.target.files[0]; //
         
         // resize the file
-        Utility.resizeImage(file, (uri) => {
+        Utility.resizeImage(file, file.type, (uri) => {
             // on resized complete
             setSelectedImg(uri)
             setIsInfoChanged(true)
