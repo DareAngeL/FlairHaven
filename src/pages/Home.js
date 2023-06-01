@@ -159,7 +159,6 @@ export default function Home() {
         const prods = await getActiveProducts(0)
         if (prods.length <= LIMIT) {
             setHasNoMoreJFYProductsLeft(true)
-            console.log('none')
         }
 
         populateLeftWall(prods)
