@@ -157,8 +157,9 @@ export default function Home() {
     const handleFetchingActiveProducts = async () => {
         // get all active products
         const prods = await getActiveProducts(0)
-        if (isFirstInit.current > 0 && prods.length <= LIMIT) {
+        if (prods.length <= LIMIT) {
             setHasNoMoreJFYProductsLeft(true)
+            console.log('none')
         }
 
         populateLeftWall(prods)
