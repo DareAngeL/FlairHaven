@@ -1,0 +1,77 @@
+@use 'Assets';
+
+.banner-img {
+    width: auto;
+    object-fit: cover;
+    background: red;
+}
+
+#reg-root {
+    height: 100vh;
+}
+
+#reg-form-root {
+    height: 100vh;
+}
+
+#reg-txt {
+    color: Assets.$secondary-color;
+}
+
+#reg-btn {
+    background: Assets.$secondary-color;
+}
+
+#reg-label {
+    font-size: small;
+}
+
+#fullName {
+    &:focus {
+        border-color: Assets.$light-green;
+        box-shadow: 0 0 0 0.2rem rgba(64, 81, 238, 0.322);
+    }
+}
+
+#email {
+    &:focus {
+        border-color: Assets.$light-green;
+        box-shadow: 0 0 0 0.2rem rgba(64, 81, 238, 0.322);
+    }
+}
+
+#password {
+    &:focus {
+        border-color: Assets.$light-green;
+        box-shadow: 0 0 0 0.2rem rgba(64, 81, 238, 0.322);
+    }
+}
+
+#billingAddress {
+    &:focus {
+        border-color: Assets.$light-green;
+        box-shadow: 0 0 0 0.2rem rgba(64, 81, 238, 0.322);
+    }
+}
+
+#phone {
+    &:focus {
+        border-color: Assets.$light-green;
+        box-shadow: 0 0 0 0.2rem rgba(64, 81, 238, 0.322);
+    }
+}
+
+#formBasicCheckbox {
+    &:focus {
+        border-color: Assets.$light-green;
+        box-shadow: 0 0 0 0.2rem rgba(64, 81, 238, 0.322);
+    }
+}
+
+#pri-term-chk {
+    font-size: 12px;
+}
+
+#pri-term {
+    font-size: 12px;
+}

@@ -1,0 +1,35 @@
+@use 'Assets';
+
+#edit-prod-container {
+    width: 60vw;
+    height: 100%;
+}
+
+#addprod-loading-img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    opacity: 0.5;
+}
+
+.editprod-inp {
+    outline: none;
+    width: 100%;
+    border: 0;
+    background: white;
+}
+
+#editprod-btn {
+    background: Assets.$primary-color;
+    border: 0;
+    
+}
+
+.back-btn-container {
+    max-height: 3rem;
+
+    &:hover {
+        cursor: pointer;
+    }
+}

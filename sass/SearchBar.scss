@@ -1,0 +1,22 @@
+@use "Assets";
+
+div {
+
+    > #search-btn {
+        z-index: 9999;
+
+        &:hover {
+            background: Assets.$secondary-color;
+        }
+    }
+
+    > .search-focus {
+        background: #f079b6;
+    }
+
+    > .search-unfocus {
+        color: Assets.$dark-color;
+        background: #F3F6F9;
+        border: 1px solid #E0E3E7;
+    }
+}

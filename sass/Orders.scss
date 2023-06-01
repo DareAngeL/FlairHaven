@@ -1,0 +1,46 @@
+@use 'Assets';
+
+#o-root {
+    position: fixed;
+    overflow-y: auto;
+    bottom: 0;
+    width: 50vw;
+    height: 80vh;
+    background: white;
+    box-shadow: 0px 8px 8px rgb(190, 190, 190);
+}
+
+#o-root-mobile {
+    position: fixed;
+    overflow-y: auto;
+    bottom: 0;
+    width: 98%;
+    height: 90%;
+    background: white;
+    box-shadow: 0px 8px 8px rgb(190, 190, 190);
+}
+
+#o-closebtn {
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+#o-frag-container {
+    max-height: 3rem;
+}
+
+#o-img {
+    object-fit: cover;
+}
+
+#o-dlbtn {
+    color: Assets.$primary-color;
+    font-size: small;
+    max-width: fit-content;
+    max-height: fit-content;
+
+    &:hover {
+        cursor: pointer;
+    }
+}

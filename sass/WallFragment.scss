@@ -1,0 +1,229 @@
+@use 'Assets';
+
+$primary-color: #c1474e;
+$secondary-color: #ebf3f1;
+
+#wf-card {
+    @include Assets.cardTheme($theme: white);
+
+    #wf-cart {
+        color: Assets.$primary-color;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+    #wf-cart-disabled {
+        color: #aaaaaa;
+
+        &:hover {
+            cursor: not-allowed;
+        }
+    }
+
+    #wf-addcomment-container {
+        border: 2px solid Assets.$dark-white;
+        border-bottom-left-radius: 12px;
+        border-bottom-right-radius: 12px;
+
+        #wf-addcomment-inp {
+            resize: none;
+            overflow: hidden;
+            border-bottom-left-radius: 12px;
+            border-bottom-right-radius: 12px;
+    
+            &:focus {
+                outline: none;
+                border: 0;
+                border-color: Assets.$light-green;
+                box-shadow: 0 0 0 0 rgba(64, 81, 238, 0.322);
+            }
+        }
+
+        #wf-addcomment-not-allowed {
+            resize: none;
+            overflow: hidden;
+    
+            &:focus {
+                cursor: not-allowed;
+                outline: none;
+                border: 0;
+                border-color: Assets.$light-green;
+                box-shadow: 0 0 0 0 rgba(64, 81, 238, 0.322);
+            }
+        }
+    }
+
+    #wf-artist-img {
+        width: 30px;
+        height: 30px;
+        border-radius: 1rem;
+        margin-left: 0.2rem;
+        margin-top: 0.2rem;
+    }
+
+    #wf-artist-name {
+        font-size: 14px;
+        margin-left: 0.5rem;
+
+    }
+
+    #wf-date {
+        font-size: 10px;
+        margin-left: 0.5rem;
+        margin-top: 0%;
+    }
+    
+    #wf-card-img {
+        object-fit: cover;
+        color: Assets.$dark-white;
+    }
+
+    #rating_lbl {
+        font-size: 10px;
+    }
+
+    #c_divider {
+        font-size: 4px;
+        margin-left: 4px;
+        color: black;
+    }
+
+    .fav_ic_read {
+        font-size: 12px;
+        color: $primary-color !important;
+    }
+
+    #wf-text {
+        font-size: 12px;
+        width: 100%;
+        margin-top: 1rem;
+
+        &:hover {
+            background: #d2e4de;
+            cursor: pointer;
+            transition: background 0.3s ease-in-out;
+        }
+    }
+
+    .heart-info {
+        font-size: 10px;
+    }
+
+    .wf-btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        max-height: 2.0rem;
+        background: transparent;
+        color: Assets.$dark-color;
+        border-color: rgb(212, 210, 210);
+
+        &:hover {
+            background: Assets.$secondary-color;
+            color: white;
+        }
+
+    }
+
+    .wf-btn-not-allowed {
+        &:hover {
+            cursor: not-allowed;
+            color: #c1474e;
+        }
+    }
+
+    .wf-comment-btn {
+        color: Assets.$primary-color;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+    .wf-comment-btn-disabled {
+        color: Assets.$dark-color;
+
+        &:hover {
+            cursor: not-allowed;
+        }
+    }
+
+    .wf-footer {
+        background: white;
+    }
+
+    #wf-comments-card {
+        width: 100%;
+        max-height: 15rem;
+        background: Assets.$dark-white;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        overflow: auto;
+    }
+}
+
+#wf-comments-card::-webkit-scrollbar-track {
+    background-color: Assets.$dark-white;
+}
+
+.fav_ic {
+    color: $primary-color;
+}
+
+#def-btn {
+    color: #c1474e;
+    width: 500px;
+    position: absolute;
+}
+
+#comment-card {
+    @include Assets.cardTheme($theme: white);
+    width: fit-content;
+    border: 0;
+
+    #comment-txt {
+        font-size: 12px;
+    }
+}
+
+.comm-edit-bg {
+    background: rgba(64, 81, 238, 0.16);
+}
+
+#comment-timemsg {
+    font-size: 10px;
+    color: #aaaaaa;
+}
+
+.comment-mod {
+    font-size: 10px;
+
+    &:hover {
+        cursor: pointer;
+        text-decoration: underline;
+        color: Assets.$secondary-color;
+    }
+}
+
+#comment-username {
+    font-size: 11px;
+    font-weight: bold;
+}
+
+#comment-prof-pic {
+    border-radius: 1rem;
+    max-height: 25px;
+    margin-right: 0.5rem;
+}
+
+.see-more-txt {
+    font-size: 10px;
+
+    &:hover {
+        cursor: pointer;
+        color: Assets.$secondary-color
+    }
+}

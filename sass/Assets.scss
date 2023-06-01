@@ -1,0 +1,19 @@
+$primary-color: #c1474e;
+$secondary-color: rgb(64, 81, 238);
+$pink: #e61580;
+$highlight: #d2e4de;
+$dark-color: #3b3b3b;
+$dark-white: #f0f2f5;
+$light-green: #92AA6D;
+$dark-green: #809C89;
+$yellow: #DED39C;
+
+@mixin theme($theme: $dark-white) {
+    background: $theme;
+}
+
+@mixin cardTheme($theme: $dark-white) {
+    background: $theme;
+    border: 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+}

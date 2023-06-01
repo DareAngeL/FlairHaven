@@ -1,0 +1,56 @@
+@use 'Assets';
+
+.modal-container {
+
+    .addprod-lbl {
+        font-size: 14px;
+    }
+
+    #add-prod-img {
+        height: 11.5rem;
+        object-fit: contain;
+        border: 1px solid;
+
+        &:hover {
+            cursor: pointer;
+            animation: addPictureAnim 0.5s infinite alternate;
+        }
+    }
+
+    #addprod-loading-img {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        opacity: 0.5;
+    }
+    
+    .addprod-inp {
+        outline: none;
+        width: 100%;
+        border: 0;
+        background: Assets.$dark-white;
+    }
+
+    #addprod-date {
+        font-size: 12px;
+    }
+
+    #addprod-btn {
+        background: Assets.$primary-color;
+        border: 0;
+    }
+
+    @keyframes addPictureAnim {
+        0% {
+            border-color: Assets.$light-green;
+            box-shadow: 0 0 0 0.2rem rgba(64, 81, 238, 0.322);
+        }
+        100% {
+            transform: scale(1.02);
+            border-color: Assets.$light-green;
+            box-shadow: 0 0 0 0.2rem rgba(64, 81, 238, 0.322);
+        }
+        
+    }
+}

@@ -1,0 +1,55 @@
+@use 'Assets';
+
+#c-root {
+    #c-container {
+        width: 60vw;
+    }
+}
+
+#c-i-deletebtn {
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+#c-payment-container {
+    border: 1px solid Assets.$secondary-color;
+}
+
+@mixin paymentSelected() {
+    color: white;
+    cursor: pointer;
+    background: rgba($color: Assets.$secondary-color, $alpha: 0.5)
+}
+
+.payment-selected {
+    @include paymentSelected()
+}
+
+#c-paypal-btn {
+    background: none;
+    color: Assets.$dark-color;
+    border: 1px solid Assets.$secondary-color;
+}
+
+#c-backbtn {
+    max-width: 2rem;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+#c-continuebtn {
+    background: Assets.$primary-color;
+    border: 0;
+}
+
+.c-payments {
+    border: 1px solid Assets.$secondary-color;
+
+     &:hover {
+        @include paymentSelected()
+     }
+}

@@ -1,0 +1,55 @@
+@use "Assets";
+
+.modal-login {
+    transform: translateX();
+
+    .form-text {
+        font-size: 10px;
+    }
+
+    #reg-link {
+        font-size: 10px;
+    }
+}
+
+#log-btn {
+    background: Assets.$primary-color;
+}
+
+.fb-ic {
+    color: blue;
+}
+
+.mail-ic {
+    color: Assets.$primary-color;
+}
+
+.login-control {
+    max-width: 70%;
+}
+
+.divider {
+    max-width: 10rem;
+    display: flex;
+    justify-content: center;
+}
+
+.login-divider-parent {
+    position: relative;
+}
+
+.login-divider {
+    position: absolute;
+    background: white;
+    top: -0.9rem;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+.login-divider-accnt {
+    position: absolute;
+    background: white;
+    top: -0.9rem;
+    left: 50%;
+    transform: translate(-50%);
+}

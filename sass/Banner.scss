@@ -1,0 +1,16 @@
+
+$primary-color: #c1474e;
+
+#banner-title {
+    font-weight: bold;
+    font-size: xx-large;
+    font-family: 'Nunito', sans-serif;
+}
+
+#banner-text {
+    width: 60%;
+}
+
+#banner-overlay {
+    background: rgba($color: $primary-color, $alpha: 0.2);
+}

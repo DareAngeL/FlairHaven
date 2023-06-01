@@ -1,0 +1,21 @@
+
+#s-r-container {
+    position: absolute;
+    width: 80vw;
+    height: 100%;
+    left: 50%;
+    transform: translate(-50%);
+
+}
+
+#s-r-search {
+    max-width: 20rem;
+}
+
+div ~ #s-r-filter-lbl {
+    transform: translate(-40%);
+
+    &:hover {
+        cursor: pointer;
+    }
+}
