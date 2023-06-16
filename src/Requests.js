@@ -1,4 +1,4 @@
-const host = 'http://192.168.254.105:4000' //'https://capstone-2-tajos.onrender.com' //'http://192.168.254.105:4000'
+const host = 'https://capstone-2-tajos.onrender.com' //'http://192.168.254.105:4000'
 
 const archiveProduct = async (productId, token) => {
     const res = await patch(`/products/archive/${productId}`, JSON.stringify({}), token)
