@@ -16,11 +16,14 @@ import { useMediaQuery } from '@mui/material';
 import SearchResult from './pages/SearchResult';
 import Maintenance from './pages/Maintenance';
 import Error from './pages/Error';
+import { useState } from 'react';
 
 function App() {
 
   const isMobileView = useMediaQuery('(max-width:800px)')
   const isSmallScreenMobile = useMediaQuery('(max-width:480px)')
+
+  const [isFirstTimeOpen, setIsFirstTimeOpen] = useState(true)
 
   const firebaseConfig = {
     apiKey: "AIzaSyCBaPrer7UYUpAS3VeI0DCmbojlHcRtC0k",
@@ -65,7 +68,9 @@ function App() {
     isSmallScreenMobile: isSmallScreenMobile,
     storage: storage,
     pageVariants: pageVariants,
-    pageTransition: pageTransition
+    pageTransition: pageTransition,
+    isFirstTimeOpen,
+    setIsFirstTimeOpen
   }
 
   return (

@@ -4,4 +4,4 @@ start "Git Bash" "G:\Program Files\Git\git-bash.exe" -c "sass --watch 'C:\Zuitt 
 @REM Start react app
 start "Git Bash" "G:\Program Files\Git\git-bash.exe" -c "npm start"
 @REM Start local server for the API
-start "Git Bash" "G:\Program Files\Git\git-bash.exe" -c "cd 'C:\Zuitt Bootcamp\batch-248\capstone-2-tajos'; npm start"
+start "Git Bash" "G:\Program Files\Git\git-bash.exe" -c "cd 'G:\Software Projects\NodeJS Projects\flairhaven-server'; npm start"

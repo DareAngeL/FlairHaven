@@ -193,9 +193,19 @@ export default function Dashboard() {
             <div className="d-flex justify-content-center">
                 <div id="dashboard-container">
                     <Breadcrumbs aria-label="breadcrumb" className="mt-2 mb-2">
-                        <Link underline="hover" color="inherit" href="/">
+                        <label 
+                            onClick={()=>navigate('/')} 
+                            onMouseEnter={(e)=> {
+                                e.target.style.cursor = 'pointer'
+                                e.target.style.textDecoration = 'underline'
+                            }}
+                            onMouseLeave={(e)=> {
+                                e.target.style.cursor = 'default'
+                                e.target.style.textDecoration = 'none'
+                            }}
+                        >
                             Home
-                        </Link>
+                        </label>
                         <label color="text.primary">Dashboard</label>
                     </Breadcrumbs>
                     {/* Profile */}

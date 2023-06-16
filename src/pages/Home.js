@@ -25,6 +25,8 @@ import ViewProduct from "../modules/ViewProduct"
 import HomeMobile from "./HomeMobile"
 import SnackBarAlert from "../components/SnackBarAlert"
 import useLazyLoader from "../hooks/useLazyLoader"
+import OpeningServer from "../components/OpeningServer"
+import { useNavigate } from "react-router-dom"
 
 const { getActiveProducts, getUserCartProducts, resetRetrievedProdIds } = require("../Requests").default
 
@@ -32,15 +34,22 @@ export default function Home() {
 
     const LIMIT = 60
 
-    const appContext = useContext(AppContext)
+    const navigate = useNavigate()
+    const { 
+        isFirstTimeOpen, 
+        setIsFirstTimeOpen, 
+        isMobileView, 
+        user 
+    } = useContext(AppContext);
 
     const leftWallRightOffset = 90
-    const isMobileView = appContext.isMobileView
 
     const rightWallRef = useRef(null)
     const leftWallRef = useRef(null)
 
     const isFirstInit = useRef(0)
+
+    const [openProfMenuDlg, setOpenProfMenuDlg] = useState(false)
 
     const [openGetLicenseView, setOpenGetLicenseView] = useState(false)
     const [productLicenseView, setProductLicenseView] = useState({})
@@ -66,6 +75,7 @@ export default function Home() {
     const [hasNoMoreJFYProductsLeft, setHasNoMoreJFYProductsLeft] = useState(false)
 
     const [showLoginSuccessAlert, setShowLoginSuccessAlert] = useState(false)
+    const [showSignOutSuccess, setShowSignOutSuccess] = useState(false)
 
     const [navSelection, setNavSelection] = useState({
         homeNavSelected: true,
@@ -164,8 +174,14 @@ export default function Home() {
         populateLeftWall(prods)
         populateRightWall(prods)
 
-        if (isFirstInit.current === 0)
+        // if it is the first time to load the products
+        if (isFirstInit.current === 0) {
+            if (isFirstTimeOpen) {
+                setIsFirstTimeOpen(false)
+            }
+
             isFirstInit.current++
+        }
     }
 
     const populateLeftWall = (prods) => {
@@ -179,6 +195,7 @@ export default function Home() {
     }
     
     const handleLoginShow = () => {
+        setOpenProfMenuDlg(false)
         setShowLogin(true)
     }
 
@@ -236,6 +253,7 @@ export default function Home() {
             />
         :
             <div id="home-container" ref={containerRef} >
+
                 <Login
                     _show={showLogin}
                     _onHide={handleLoginHide}
@@ -252,22 +270,26 @@ export default function Home() {
                             className="d-flex"
                             onMouseEnter={(e) => {
                                 setIsHoverOnProfNav(true)
+                                setOpenProfMenuDlg(true)
                             }}
                             onMouseLeave={(e) => {
                                 setIsHoverOnProfNav(false)
+                                setOpenProfMenuDlg(true)
                             }}
                         >
                             {
-                                (isHoverOnProfNav) ?
+                                (isHoverOnProfNav && openProfMenuDlg) ?
                                     <div className="pt-1 pb-1 ps-2 pe-2 rounded-2">
                                         <ProfileMenu
-                                            user={appContext.user()}
+                                            user={user()}
                                             style={{
                                                 position: 'absolute',
                                                 left: '10%',
                                                 top: '1%'
                                             }}
                                             onLoginClick={handleLoginShow}
+                                            onClose={()=>setOpenProfMenuDlg(false)}
+                                            onSignOut={()=>setShowSignOutSuccess(true)}
                                         />
                                         <ProfileIcon className="nav-ic primary-color"/>
                                     </div>
@@ -454,7 +476,8 @@ export default function Home() {
                     </Col>
                 </Row>
                 
-                <SnackBarAlert open={showLoginSuccessAlert} text="Login Successful!" onClose={()=>setShowLoginSuccessAlert(false)}/>
+                <SnackBarAlert open={showLoginSuccessAlert} text="Login successful!" onClose={()=>setShowLoginSuccessAlert(false)}/>
+                <SnackBarAlert open={showSignOutSuccess} text="Sign out successful!" onClose={()=>setShowSignOutSuccess(false)}/>
 
                 {(isOpenCart)?
                     <Cart open={isOpenCart} onItemRemoved={handleOnCartItemRemoved} onClose={()=>{
@@ -495,6 +518,7 @@ export default function Home() {
                     onClose={()=>setOpenGetLicenseView(false)}
                 />
 
+                <OpeningServer open={isFirstTimeOpen} />
                 
             </div>
     )
