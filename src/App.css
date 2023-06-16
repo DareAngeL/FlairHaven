@@ -325,7 +325,7 @@
 #mini-card-root {
   border: 0;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
-  max-width: 7.6rem;
+  max-width: 7.5rem;
   position: absolute;
 }
 #mini-card-root:hover {

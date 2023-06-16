@@ -1,26 +1,22 @@
 import { Stack } from "react-bootstrap";
 import { ImagePlaceHolder } from "../res/Res";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import ProfileIcon from '@mui/icons-material/FaceRounded';
-
-const duration = 500
-const transitionProp = {
-    transition: `width ${duration}ms ease-in-out`,
-}
-
-const transitionStyles = {
-    entering: { left: 30 },
-    entered:  { width: '94vw' },
-}
+import SnackBarAlert from "../components/SnackBarAlert";
+import { useState } from "react";
 
 export default function ProfileMenu(data) {
 
     const {
         user,
         onLoginClick,
+        onSignOut,
         style,
-        containerRef
+        containerRef,
+        onClose,
     } = data
+
+    const navigate = useNavigate()
 
     const profPic = user !== null && user.profilePicture !== '' ? user.profilePicture : ImagePlaceHolder
     const userName = user !== null ? `${user.firstName} ${user.lastName} ${user.suffix}`.trim() : ''
@@ -28,8 +24,10 @@ export default function ProfileMenu(data) {
     const isDesigner = user !== null ? user.isDesigner : false
 
     const handleSignOut = () => {
+        onSignOut()
         localStorage.clear()
-        window.location.reload()
+        navigate('/')
+        onClose()
     }
 
     return (

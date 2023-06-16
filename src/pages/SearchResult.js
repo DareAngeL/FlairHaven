@@ -1,17 +1,16 @@
-import { Button, Stack } from "react-bootstrap";
+import { Stack } from "react-bootstrap";
 import SearchBar from "../components/SearchBar";
 import { Breadcrumbs, Link, Skeleton } from "@mui/material";
 import Shelves from "../modules/Shelves";
 import MiniCard from "../components/MiniCard";
 import { useContext, useRef, useState } from "react";
 import Loading from "../components/Loading";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useEffect } from "react";
 import ViewProduct from "../modules/ViewProduct";
 import GetLicense from "../modules/GetLicense";
 import FilterSort, { SortType } from "../modules/FilterSort";
 import useLazyLoader from "../hooks/useLazyLoader";
-import SortButton from "../components/SortButton";
 import CloseIcon from '@mui/icons-material/CloseRounded';
 import AppContext from "../AppContext";
 
@@ -22,6 +21,7 @@ export default function SearchResult() {
     const { productName } = useParams()
 
     const appContext = useContext(AppContext)
+    const navigate = useNavigate()
 
     const [searchProductName, setSearchProductName] = useState(productName)
     const [selectedSort, setSelectedSort] = useState(null)
@@ -233,9 +233,19 @@ export default function SearchResult() {
                         onChange={handleOnSearchChange}
                     />
                     <Breadcrumbs aria-label="breadcrumb" className="mt-2">
-                        <Link underline="hover" color="inherit" href="/">
+                        <label
+                            onClick={()=> navigate('/')}
+                            onMouseEnter={(e)=> {
+                                e.target.style.cursor = 'pointer'
+                                e.target.style.textDecoration = 'underline'
+                            }}
+                            onMouseLeave={(e)=> {
+                                e.target.style.cursor = 'default'
+                                e.target.style.textDecoration = 'none'
+                            }}
+                        >
                             Home
-                        </Link>
+                        </label>
                         <label color="text.primary">Search Results</label>
                     </Breadcrumbs>
 
