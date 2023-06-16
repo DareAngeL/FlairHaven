@@ -13,7 +13,7 @@ import OrdersOutlineIcon from '@mui/icons-material/Inventory2Outlined';
 import OrdersIcon from '@mui/icons-material/Inventory2Rounded';
 import CartOutlinedIcon from '@mui/icons-material/ShoppingBasketOutlined';
 import CartIcon from '@mui/icons-material/ShoppingBasketRounded';
-import { Alert, Badge, Skeleton } from "@mui/material";
+import { Badge, Skeleton } from "@mui/material";
 import Cart from "../modules/Cart";
 import Orders from "../modules/Orders";
 import ViewProduct from "../modules/ViewProduct";
@@ -26,10 +26,17 @@ import MiniCard from "../components/MiniCard";
 import { useEffect } from "react";
 import Utility from "../util/Utility";
 import RightWall from "../modules/RightWall";
+import OpeningServer from "../components/OpeningServer";
+import SnackBarAlert from "../components/SnackBarAlert";
 
 export default function HomeMobile(props) {
 
-    const appContext = useContext(AppContext)
+    const { 
+        isFirstTimeOpen, 
+        isMobileView, 
+        isSmallScreenMobile,
+        user
+    } = useContext(AppContext)
 
     const {
         windowProducts,
@@ -46,6 +53,7 @@ export default function HomeMobile(props) {
 
     const [showLogin, setShowLogin] = useState(false)
     const [showLoginSuccessAlert, setShowLoginSuccessAlert] = useState(false)
+    const [showSignOutSuccess, setShowSignOutSuccess] = useState(false)
     const [isShowProfNav, setShowProfNav] = useState(false)
     const [isClickOnHomeNav, setIsClickOnHomeNav] = useState(false)
     const [isOpenOrders, setIsOpenOrders] = useState(false)
@@ -121,6 +129,7 @@ export default function HomeMobile(props) {
         setShowLoginSuccessAlert(true)
         setTimeout(() => {
             setShowLoginSuccessAlert(false)
+            window.location.reload()
         }, 1000)
     }
 
@@ -171,7 +180,7 @@ export default function HomeMobile(props) {
                 _onHide={handleLoginHide}
                 onLoginSuccess={handleLoginSuccess}
             />
-            <TopBar isMobileView={appContext.isMobileView} isSmallScreenMobile={appContext.isSmallScreenMobile}/>
+            <TopBar isMobileView={isMobileView} isSmallScreenMobile={isSmallScreenMobile}/>
 
             {/* Navigator */}
             <div id="nav-m-container" className="d-flex justify-content-center align-items-center text-center pt-3">
@@ -188,7 +197,7 @@ export default function HomeMobile(props) {
                             <div className="rounded-2">
                                 <ProfileMenu
                                     containerRef={profileMenuRef}
-                                    user={appContext.user()}
+                                    user={user()}
                                     style={{
                                         position: 'absolute',
                                         left: profMenuPosition.LEFT + 'px',
@@ -197,6 +206,7 @@ export default function HomeMobile(props) {
                                     }}
                                     onLoginClick={handleLoginShow}
                                     onBlur={(e)=>{setShowProfNav(false)}}
+                                    onSignOut={(e) => setShowSignOutSuccess(true)}
                                 />
                                 <ProfileIcon
                                     fontSize="large" 
@@ -369,7 +379,10 @@ export default function HomeMobile(props) {
                 </div>
             }
 
-            {(showLoginSuccessAlert) ?
+            <SnackBarAlert open={showLoginSuccessAlert} text="Login successful!" onClose={()=>setShowLoginSuccessAlert(false)}/>
+            <SnackBarAlert open={showSignOutSuccess} text="Sign out successful!" onClose={()=>setShowSignOutSuccess(false)}/>
+
+            {/* {(showLoginSuccessAlert) ?
                 <Alert severity="success" style={{
                     position: 'absolute',
                     width: '300px',
@@ -378,7 +391,7 @@ export default function HomeMobile(props) {
                 }}>Login Successful!</Alert>
                 :
                 <></>
-            }
+            } */}
             {(isOpenCart)?
                 <Cart open={isOpenCart} onItemRemoved={handleOnCartItemRemoved} onClose={()=>{
                     setIsOpenCart(false)
@@ -409,6 +422,8 @@ export default function HomeMobile(props) {
                 open={openGetLicenseView} 
                 onClose={()=>setOpenGetLicenseView(false)}
             />
+
+            <OpeningServer open={isFirstTimeOpen} />
         </Stack>
     )
 }

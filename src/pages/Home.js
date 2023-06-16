@@ -34,7 +34,6 @@ export default function Home() {
 
     const LIMIT = 60
 
-    const navigate = useNavigate()
     const { 
         isFirstTimeOpen, 
         setIsFirstTimeOpen, 

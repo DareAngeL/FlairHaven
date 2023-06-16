@@ -13,7 +13,7 @@ export default function ProfileMenu(data) {
         onSignOut,
         style,
         containerRef,
-        onClose,
+        onClose=()=>{},
     } = data
 
     const navigate = useNavigate()
