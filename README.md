@@ -39,7 +39,8 @@ A concept e-commerce digital art website where artists can showcase and sell the
 
 ## Getting Started
 
-To view this concept e-commerce digital website, visit the link:
+To view this concept e-commerce digital art website, visit the link:
+https://flair-haven.vercel.app/
 
 ## Contributions
 Contributions and improvements to the concept are welcome. If you have any suggestions, bug fixes, or feature additions, please feel free to open an issue or submit a pull request. Your contributions will help enhance the concept and make it more comprehensive.
